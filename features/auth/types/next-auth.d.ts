@@ -11,6 +11,7 @@ declare module "next-auth" {
  */
 interface User {
         user: UserType
+        token: string
 }
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
