@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { login } from "./features/auth/apis/auth.api";
 import { loginSchema } from "./features/auth/schemes/login.schema";
+import { Session } from "inspector/promises";
 
 
 export const authOptions: NextAuthOptions = {
@@ -41,8 +42,13 @@ export const authOptions: NextAuthOptions = {
  
             return token
         },
+        session: ({session , token}) => {
+            session.user = token.user;
+
+            return session;
+        }
     }  
-}
+}    
 
 
 
