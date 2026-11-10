@@ -1,22 +1,28 @@
+import AuthFooter from "@/features/auth/components/auth-footer";
+import AuthHeader from "@/features/auth/components/auth-header";
 import LoginForm from "@/features/auth/components/login/login-form";
-import Link from "next/link";
-
 
 export default function page() {
   return (
-    <main className="h-full flex flex-col justify-center items-center gap-10">
-    <div className="w-full max-w-113 flex flex-col gap-10">
-          <h1 className=" text-2xl font-fraunces">Welcome back </h1>
-        <p className="">Sign in to continue to your account.</p>
+    <main className="flex flex-1 flex-col items-center justify-center px-6 pb-10 sm:px-10">
+      <div className="flex w-full max-w-100 flex-col">
+        <AuthHeader
+          title="Welcome back"
+          description="Sign in to continue to your account."
+        />
 
         <LoginForm />
 
-        <p>Quick demo access</p>
+        <div className="my-4 flex items-center gap-3 text-sm text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+          Quick demo access
+        </div>
 
-      
-      <h1 className=" text-red-500 "> New to Maskan?<Link href={"regiser"}>Create an account</Link></h1>  
-    </div>
-        
+        <AuthFooter
+          description="New to Maskan?"
+          link="register"
+          linkText="Create an account"
+        />
+      </div>
     </main>
-  )
+  );
 }

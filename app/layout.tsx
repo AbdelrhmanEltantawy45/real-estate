@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist, Manrope } from "next/font/google";
+import { Fraunces, Manrope  } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/shared/lib/utils/tailwind-cn";
 import Provider from "@/shared/context/global/provider";
+import { Toaster } from "@/shared/components/ui/toast";
 
-const fraunces = Fraunces({subsets:['latin'],variable:'--font-fraunces'});
+const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+
 
 const manrope = Manrope({
-  variable: "--font-geist-mono",
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -25,12 +23,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn( "antialiased", manrope.className, geistSans.variable, fraunces.variable)}
+      className={cn(
+        "antialiased",
+        manrope.className,
+        fraunces.variable,
+      )}
     >
       <body>
-      <Provider>
-             {children}
-      </Provider>
+        <Provider>
+          {children}
+          <Toaster />
+        </Provider>
       </body>
     </html>
   );
