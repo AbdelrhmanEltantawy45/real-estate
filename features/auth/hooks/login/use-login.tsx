@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoginFields } from '../types/auth'
+import { LoginFields } from '../../types/auth'
 import { signIn } from 'next-auth/react';
 import { useMutation } from '@tanstack/react-query';
 
