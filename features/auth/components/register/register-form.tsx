@@ -15,6 +15,7 @@ import { RegisterFields } from "../../types/auth";
 import { registerSchema } from "../../schemas/register.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useRegister from "../../hooks/register/use-register";
+import AuthButton from "../auth-button";
 
 const ROLES = [
   { value: "buyer", label: "Buyer / Renter", icon: House },
@@ -34,7 +35,7 @@ const FIELDS: {
   { name: "email", label: "Email", type: "email", autoComplete: "email" },
   {
     name: "phone",
-    label: "Phone number",
+    label: "REGA license number",
     type: "tel",
     inputMode: "numeric",
     autoComplete: "tel",
@@ -81,7 +82,7 @@ export default function RegisterForm() {
             type="button"
             aria-pressed={role === value}
             variant={role === value ? "default" : "outline"}
-            className="h-auto flex-col items-start justify-center gap-2 border px-4 py-6 text-sm hover:border-chart-3 sm:px-5 sm:py-8"
+            className="h-auto  flex-col items-start justify-center gap-2 border px-4 py-6 text-sm hover:border-chart-3 sm:px-5 sm:py-8"
             onClick={() => {
               setRole(value);
               // buyer doesn't send a phone, so clear it when switching back
@@ -154,13 +155,13 @@ export default function RegisterForm() {
         <p className="my-4 text-center text-sm text-red-500">{error.message}</p>
       )}
 
-      <Button
-        disabled={isPending || form.formState.isSubmitting}
+      <AuthButton
+        title="Create account"
         type="submit"
-        className="my-5 w-full py-6"
-      >
-        Create account
-      </Button>
+        disabled={
+          isPending || form.formState.isSubmitting || !form.formState.isValid
+        }
+      />
     </form>
   );
 }
