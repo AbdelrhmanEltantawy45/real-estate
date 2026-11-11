@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { login } from "./features/auth/apis/auth.api";
-import { loginSchema } from "./features/auth/schemes/login.schema";
+import { login } from "./features/auth/apis/auth-server/auth.api";
+import { loginSchema } from "./features/auth/schemas/login.schema";
 import { Session } from "inspector/promises";
 
 

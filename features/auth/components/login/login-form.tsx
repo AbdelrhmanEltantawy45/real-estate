@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { LoginFields } from "../../types/auth";
-import { loginSchema } from "../../schemes/login.schema";
+import { loginSchema } from "../../schemas/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
@@ -14,7 +14,7 @@ import {
 } from "@/shared/components/ui/field";
 import { Input } from "@/shared/components/ui/input";
 import Link from "next/link";
-import useLogin from "../../hooks/use-login";
+import useLogin from "../../hooks/login/use-login";
 import { Button } from "@/shared/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 
