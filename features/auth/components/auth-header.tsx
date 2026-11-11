@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   className?: string;
   title: string;
-  description: string;
+  description?: string;
   children?: React.ReactNode;
 };
 
@@ -16,7 +16,7 @@ export default function AuthHeader({
   return (
     <div className={className}>
       {title && (
-        <h1 className="font-fraunces text-2xl font-semibold sm:text-3xl">
+        <h1 className="font-fraunces  text-xl font-semibold sm:text-3xl">
           {title}
         </h1>
       )}

@@ -17,6 +17,7 @@ import Link from "next/link";
 import useLogin from "../../hooks/login/use-login";
 import { Button } from "@/shared/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
+import AuthButton from "../auth-button";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -107,16 +108,13 @@ export default function LoginForm() {
       {error?.message && (
         <p className="my-4 text-center text-sm text-red-500">{error.message}</p>
       )}
-
-      <Button
+      <AuthButton
+        title="Sign in"
+        type="submit"
         disabled={
           isPending || form.formState.isSubmitting || !form.formState.isValid
         }
-        type="submit"
-        className="my-3 w-full py-6"
-      >
-        Sign in
-      </Button>
+      />
     </form>
   );
 }
