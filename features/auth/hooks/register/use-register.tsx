@@ -1,8 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { RegisterFields } from "../../types/auth";
 import { register } from "../../apis/auth-client/auth.api";
+import { useRouter } from "next/navigation";
 
 export default function useRegister() {
+  const router = useRouter();
+
   //Mutation
   return useMutation({
     mutationFn: async (field: RegisterFields) => {
@@ -15,9 +18,11 @@ export default function useRegister() {
       return response;
     },
 
-     onSuccess: () => {
-        const callbackUrl = (new URLSearchParams(location.search)).get("callbackUrl") || "/verify-email";
-        location.href = callbackUrl;
-        }
+    onSuccess: () => {
+      const callbackUrl =
+        new URLSearchParams(location.search).get("callbackUrl") ||
+        "/verify-email";
+      router.push(callbackUrl);
+    },
   });
 }

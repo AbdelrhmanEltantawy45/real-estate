@@ -19,7 +19,7 @@ export default function AuthButton({
 }: Props) {
   return (
     <Button
-      className={`${className} my-5 w-full py-6`}
+      className={`${className} my-5 w-full py-6 cursor-pointer`}
       disabled={disabled}
       type={type}
     >

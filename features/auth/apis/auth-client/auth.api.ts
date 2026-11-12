@@ -1,7 +1,7 @@
 
 import { HEADERS } from "@/shared/constants/api.constant"
 import { ApiResponse } from "@/shared/types/api"
-import { RegisterFields, RegisterResponse } from "../../types/auth"
+import { ForgotPasswordFields, ForgotPasswordResponse, RegisterFields, RegisterResponse } from "../../types/auth"
 
 
 export const register = async (values: RegisterFields) => {
@@ -12,9 +12,23 @@ export const register = async (values: RegisterFields) => {
       ...HEADERS.jsonBody,
     },
   });
-  console.log("responscdmc d fkndgnkkndfgnkfnkgfnk", values);
 
   const data: ApiResponse<RegisterResponse> = await response.json();
 
   return data;
 };
+
+export const forgotPassword = async (values: ForgotPasswordFields) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`, {
+    method: "POST",
+    body: JSON.stringify(values),
+    headers: {
+      ...HEADERS.jsonBody,
+    },
+  });
+
+  const data: ApiResponse<ForgotPasswordResponse> = await response.json();
+
+  return data;
+};
+
