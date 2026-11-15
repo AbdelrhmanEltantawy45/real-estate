@@ -86,7 +86,7 @@ export default function LoginForm() {
                   onClick={() => setShowPassword((prev) => !prev)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                   aria-pressed={showPassword}
-                  className="absolute inset-y-0 end-3 flex items-center text-muted-foreground transition-colors hover:text-foreground"
+                  className="absolute inset-y-0 inset-e-3 flex items-center text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -98,12 +98,14 @@ export default function LoginForm() {
         />
       </FieldGroup>
 
-      <Link
+      <div className="flex justify-end ">
+        <Link
         href="forgot-password"
-        className="flex justify-end text-sm font-manrope text-primary hover:underline sm:text-base"
+        className=" text-sm font-manrope text-primary hover:underline sm:text-base "
       >
         forgot password?
       </Link>
+      </div>
 
       {error?.message && (
         <p className="my-4 text-center text-sm text-red-500">{error.message}</p>
